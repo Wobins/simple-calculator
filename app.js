@@ -24,10 +24,10 @@ const calculate = () => {
         operation = arr.join("");
         result = eval(operation);
 
-        if (result.typeof !== Number) {
+        if (result === Infinity || isNaN(result)) {
             console.log(result);
             screen.textContent = "MATH ERROR";
-        } else {
+        } else{
             screen.textContent = result;
         }
 
