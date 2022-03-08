@@ -8,8 +8,6 @@ let deleteBtn = document.querySelector('.delete');
 const calculate = () => {
     try {
         operation = screen.textContent;
-        // result = eval(operation)
-        // screen.textContent = result
 
         let arr = operation.split("");
 
