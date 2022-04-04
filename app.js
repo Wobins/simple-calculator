@@ -6,42 +6,23 @@ let deleteBtn = document.querySelector('.delete');
 
 
 const calculate = () => {
-    try {
-        operation = screen.textContent;
-
-        let arr = operation.split("");
-
-        while (arr.includes('(')) {
-            let index = arr.indexOf('(');
-
-            if (index !== -1) {
-                arr[index] = '*(';
-            }
-        }
-
-        operation = arr.join("");
-        result = eval(operation);
-
-        if (result === Infinity || isNaN(result)) {
-            console.log(result);
-            screen.textContent = "MATH ERROR";
-        } else{
-            screen.textContent = result;
-        }
-
-    } catch (error) {
-        console.log(error.message);
-        screen.textContent = "SYNTAX ERROR";
-    }
+    operation = screen.textContent;
+    console.log(operation)
+    new_operation = replace(operation)
+    console.log(new_operation)
+    result = eval(new_operation);
+    screen.textContent = result;
 }
 
 
+// function to clear the screen
 const clearScreen = () => {
     // window.location.reload();
     screen.textContent = '';
 }
 
 
+// function to delete the last input
 function deletion() {
     let displayed = screen.textContent;
     let arr = displayed.split("");    
@@ -50,6 +31,24 @@ function deletion() {
     // console.log(newArr)
     screen.textContent = "";
     newArr.forEach(n => screen.append(n));
+}
+
+
+// function to replace HTML entities with commmon operators in JS
+function replace(str) {
+    const mapObj = {
+        '÷': "/",
+        '×': "*",
+        '%': "/100",
+        '−': "-"
+    };
+    new_str = str.replace(/\b(?:÷|×|%|−)\b/gi, matched => mapObj[matched]);
+    new_str = new_str.replace("(", "*(");
+    new_str = new_str.replace("÷", "/");
+    new_str = new_str.replace("×", "*");
+    new_str = new_str.replace("%", "/100");
+    new_str = new_str.replace("−", "-");
+    return new_str;
 }
 
 
@@ -67,3 +66,5 @@ equalSign.addEventListener('click', calculate); // Do the operation
 clearBtn.addEventListener('click', clearScreen); // Clear the screen
 
 deleteBtn.addEventListener('click', deletion ); // Delete the last item of the opeartion chain
+
+
