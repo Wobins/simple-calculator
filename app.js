@@ -1,36 +1,42 @@
-let screen = document.querySelector('.screen p');
+let screen = document.querySelector('.screen');
+let responseScreen = document.querySelector('.response-screen');
 let buttons = document.querySelectorAll('.button');
 let equalSign = document.querySelector('.equal');
 let clearBtn = document.querySelector('.clear');
 let deleteBtn = document.querySelector('.delete');
 
 
+const getClasses = (element) => document.getElementsByClassName(element)
+const getClass = (element) => document.querySelector(`.${element}`)
+const getId = (element) => document.getElementById(element)
+const getTags = (element) => document.getElementsByTagName(element)
+
+
 const calculate = () => {
-    operation = screen.textContent;
+    let operation = responseScreen.textContent;
     console.log(operation)
-    new_operation = replace(operation)
+    let new_operation = replace(operation)
     console.log(new_operation)
-    result = eval(new_operation);
-    screen.textContent = result;
+    let result = eval(new_operation);
+    console.log(result)
+    screen.textContent = responseScreen.textContent
+    responseScreen.textContent = result;
 }
 
 
 // function to clear the screen
-const clearScreen = () => {
-    // window.location.reload();
-    screen.textContent = '';
-}
+const clearScreen = () => ( responseScreen.textContent = '')
 
 
 // function to delete the last input
-function deletion() {
-    let displayed = screen.textContent;
+function deletion(el) {
+    let displayed = el.textContent;
     let arr = displayed.split("");    
     let i = arr.length - 1;
     let newArr = arr.slice(0, i);
     // console.log(newArr)
-    screen.textContent = "";
-    newArr.forEach(n => screen.append(n));
+    el.textContent = "";
+    newArr.forEach(n => el.append(n));
 }
 
 
@@ -56,15 +62,22 @@ function replace(str) {
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         el = button.textContent;
-        screen.append(el);
+        responseScreen.append(el);
     })
 });
 
 
 equalSign.addEventListener('click', calculate); // Do the operation
 
-clearBtn.addEventListener('click', clearScreen); // Clear the screen
+// Clear the screen
+clearBtn.addEventListener('click', clearScreen); 
 
-deleteBtn.addEventListener('click', deletion ); // Delete the last item of the opeartion chain
+deleteBtn.addEventListener('click', () => {
+    if (responseScreen.textContent == '') {
+        deletion(screen)
+    } else {
+        deletion(responseScreen)
+    } 
+} ); // Delete the last item of the opeartion chain
 
 

@@ -2,15 +2,22 @@ body{
 	width: 100%;
 	height: 100%;
 	cursor: pointer;  
+	box-sizing: border-box;
 }
 
 #calc{
 	margin-top: 10vh;
 }
 
-.screen {
+.display-up{
 	width: 100%;
-	height: 10vh;
+	height: 7vh;
+	border: 2px solid black;
+}
+
+.display-down{
+	width: 100%;
+	height: 8vh;
 	border: 2px solid black;
 }
 

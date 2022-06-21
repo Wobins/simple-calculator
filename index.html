@@ -16,19 +16,20 @@
 
     <title>My Calculator</title>
 </head>
-<body class="container-fluid">
+<body class="">
 
-    <div id="calc" class=" neumorphism col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-8 offset-2">
-        <div class="container">
-            <div class="container-fluid screen text-end neumorphism border-0"><p></p></div>
+    <div id="calc" class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-8 offset-2">
+        <div class="container-md shadow border rounded-2">
+            <div class="container-fluid text-end border-0 display-up"><span class="text-muted screen"></span></div>
+            <div class="container-fluid text-end border-0 display-down"><span class="response-screen display-6"></span></div>
         </div>
-        <div class="table-responsive">
+        <div class="shadow table-responsive">
             <table class="table table-borderless" id="keyboard">
                 <tbody>
                     <tr>
-                        <td class="text-center clear">C</td>
                         <td class="text-center button">(</td>
                         <td class="text-center button">)</td>
+                        <td class="text-center clear">C</td>
                         <td class="text-center button">&divide;</td> <!-- &#247;-->
                     </tr>
                     <tr>
@@ -38,9 +39,9 @@
                         <td class="text-center button">&minus;</td> <!--&plusmn;-->
                     </tr>
                     <tr>
-                        <td class="text-center button ">4</td>
-                        <td class="text-center button ">5</td>
-                        <td class="text-center button ">6</td>
+                        <td class="text-center button bg-light">4</td>
+                        <td class="text-center button bg-light">5</td>
+                        <td class="text-center button bg-light">6</td>
                         <td class="text-center button">+</td>
                     </tr>
                     <tr>
@@ -50,10 +51,10 @@
                         <td class="text-center button">&times;</td> <!--&#215;-->
                     </tr>
                     <tr>
-                        <td class="text-center button">.</td>
                         <td class="text-center button">0</td>
-                        <td class="text-center delete">DEL</td>
+                        <td class="text-center button">.</td>
                         <td class="text-center equal">=</td>
+                        <td class="text-center delete">DEL</td>
                     </tr>
                 </tbody>
             </table>
